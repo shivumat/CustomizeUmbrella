@@ -25,8 +25,11 @@ const CustomUmbrella = (props) => {
 
     return <div>
         {isLoading ? <img className='loading' style={styles.loading} src={colors[colorType].loader}/> : 
-        <img style={styles.umbrella} src={colors[colorType].umbrella}/>}
+        <>
+        <img style={styles.umbrella} src={colors[colorType].umbrella}/>
         {customImage && <img src={customImage} style={styles.customImage}/>}
+        </>
+}
     </div>
 }
 
