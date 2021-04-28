@@ -3,7 +3,7 @@ import colors from '../config/colors'
 
 const ColorSelector = (props) => {
 
-    const {colorKey, setColor, style} = props;
+    const {colorKey, setColor, style, setIsLoading} = props;
 
     const styles = {
         body: {
@@ -20,10 +20,22 @@ const ColorSelector = (props) => {
         }
     }
 
+    const changeColor = (color) => {
+        setIsLoading(false)
+        setColor(color)
+    }
+
+    const onColorClick = (color) => {
+        if(color !== colorKey){
+            setIsLoading(true)
+            setTimeout(function(){ changeColor(color) }, 1000);
+        }
+    }
+
     return <div style={styles.body}>
         {Object.entries(colors)
             .map((color,i) => <div 
-                                onClick={() => setColor(color[0])}
+                                onClick={() => onColorClick(color[0])}
                                 key={`colorDot_${i}`} 
                                 className='dot' 
                                 style={styles.dot(color[1], colorKey === color[0])}/>
