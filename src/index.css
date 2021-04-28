@@ -16,6 +16,9 @@ code {
   height: 100%;
   width: 100%;
   position: absolute;
+  min-width: 850px;
+  min-height: 700px;
+  overflow: auto;
 }
 
 .Umbrella {
@@ -27,4 +30,22 @@ code {
   height: 15px;
   width: 15px;
   border-radius: 50%;
+}
+
+.white-svg {
+  filter: brightness(0) invert(1);
+}
+
+.loading {
+  animation-name: ckw;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes ckw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

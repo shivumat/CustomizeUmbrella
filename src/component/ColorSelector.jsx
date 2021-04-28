@@ -3,10 +3,11 @@ import colors from '../config/colors'
 
 const ColorSelector = (props) => {
 
-    const {colorKey, setColor} = props;
+    const {colorKey, setColor, style} = props;
 
     const styles = {
         body: {
+            ...style,
             display: 'flex'
         },
         dot : (color, slected) =>  {
@@ -14,6 +15,7 @@ const ColorSelector = (props) => {
                 border: `3px solid ${slected ? color.border : color.color}`,
                 backgroundColor: `${color.color}`, 
                 marginRight: '5px',
+                cursor : 'pointer'
             }
         }
     }
