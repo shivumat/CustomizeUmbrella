@@ -13,6 +13,7 @@ const Umbrella = () => {
     const [isLoading , setIsLoading] = useState(false)
 
     const validFileTypes = ['image/png', 'image/jpeg'];
+    const fileSizeLimit = 5;
 
     const styles = {
         body : {
@@ -78,14 +79,15 @@ const Umbrella = () => {
                                 setColor={setColor}/>
                             <div style={styles.h2}>Customise your Umbrella</div>
                             <div style={styles.h3}>Upload a logo for instant preview.</div>
-                            <div style={styles.h4}>.png and .jpg files only. Max file size is 5MB.</div>
+                            <div style={styles.h4}>.png and .jpg files only. Max file size is 5Mb.</div>
                             <UploadButton 
                                 setFileTypeError={setFileTypeError}
                                 setIsLoading={setIsLoading}
                                 validFileTypes={validFileTypes}
                                 fileName={customImageName}
                                 setImageName={setCustomImageName}
-                                setImage={setCustomImage}/>
+                                setImage={setCustomImage}
+                                fileSizeLimit={fileSizeLimit}/>
                         </div>
                     </div>
                 </div>

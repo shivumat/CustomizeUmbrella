@@ -4,9 +4,11 @@ const uploadSVG = require('../assets/img/upload_icon.svg').default
 
 const UploadButton = (props) => {
 
-    const { fileName, setFileTypeError, validFileTypes, setImageName, setImage} = props
+    const { fileName, setFileTypeError, validFileTypes, setImageName, setImage, fileSizeLimit} = props
     const hiddenFileInput = useRef(null);
-	const handleUploadClick = () => hiddenFileInput.current.click();
+    const handleUploadClick = () => hiddenFileInput.current.click();
+    
+    const bitsInMb = 1048576;
 
     const styles = {
         body : {
@@ -37,7 +39,7 @@ const UploadButton = (props) => {
 
     const uploadImage = (e) => {
 		if (e.target.files.length) {
-			if(!validFileTypes.includes(e.target.files[0].type)){
+			if(!validFileTypes.includes(e.target.files[0].type) || (e.target.files[0].size > (fileSizeLimit * bitsInMb))){
                 setFileTypeError(true)
                 setImageName(null)
                 setImage(null)
@@ -49,7 +51,6 @@ const UploadButton = (props) => {
                     reader.onload = (e) => {
                         setImageName(file.name)
                         setImage(e.target.result)
-                        console.log(e.target, file)
                     }
                     reader.readAsDataURL(file);
                   }
